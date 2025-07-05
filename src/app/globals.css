@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root[data-theme="light"] {
+  --background: #efefef;
+  --background-50: rgba(239, 239, 239, 0.5);
+  --background-10: rgba(239, 239, 239, 0.1);
+  --foreground: #334155;
+  --hover-bg: rgba(51, 65, 85, 0.05);
+  --hover-bg-dark: rgba(51, 65, 85, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(18, 24, 38, 0.1);
+  --modal-bg: rgba(255, 255, 255, 0.95);
+  --modal-overlay: rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme="dark"] {
+  --background: #0f172a;
+  --background-50: rgba(15, 23, 42, 0.5);
+  --background-10: rgba(15, 23, 42, 0.1);
+  --foreground: #e2e8f0;
+  --hover-bg: rgba(226, 232, 240, 0.05);
+  --hover-bg-dark: rgba(226, 232, 240, 0.1);
+  --card-bg: rgba(30, 41, 59, 0.5);
+  --border-color: rgba(210, 214, 218, 0.08);
+  --modal-bg: rgba(15, 23, 42, 0.95);
+  --modal-overlay: rgba(0, 0, 0, 0.6);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  background-image: 
+    radial-gradient(circle at 50% 0%, 
+      rgba(59, 130, 246, 0.03), 
+      transparent 40%),
+    radial-gradient(circle at 0% 100%, 
+      rgba(168, 85, 247, 0.03), 
+      transparent 40%);
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-gradient {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+}
+
+
+@layer components {
+  .main-container {
+    @apply w-full min-h-screen transition-all duration-150 ease-in-out;
+  }
+
+  .main-content {
+    @apply md:ml-64 p-4 sm:p-6 lg:p-8 transition-all duration-150;
+  }
+
+  /* Mobile için padding */
+  @media (max-width: 767px) {
+    .main-content {
+      @apply pt-20; /* Header yüksekliği + extra padding */
+    }
+  }
+
+  .page-title {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold mb-6;
+  }
+
+  .card {
+    @apply p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-border bg-background-50 hover:bg-foreground-5 transition-colors duration-150;
+  }
+
+  .modal-container {
+    @apply fixed inset-0 flex items-center justify-center z-50;
+    background: var(--modal-overlay);
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-content {
+    @apply w-full max-w-md max-h-[90vh] overflow-y-auto shadow-2xl border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6;
+    background: var(--modal-bg);
+    backdrop-filter: blur(12px);
+  }
+
+  .button-primary {
+    @apply px-3 py-2 sm:px-4 sm:py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-150;
+  }
+
+  .button-danger {
+    @apply px-3 py-2 sm:px-4 sm:py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-150;
+  }
+
+  .button-secondary {
+    @apply px-3 py-2 sm:px-4 sm:py-2 border border-border rounded-lg hover:bg-foreground-5 transition-colors duration-150;
+  }
+
+  .input-field {
+    @apply w-full p-2 rounded-lg border border-border;
+    background: var(--background);
+  }
+
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+  }
+
+  .nav-sidebar {
+    @apply fixed top-0 left-0 right-0 z-50 bg-background-50 backdrop-blur-xl;
+  }
+
+  @media (min-width: 768px) {
+    .nav-sidebar {
+      @apply w-64 h-screen border-r border-border;
+    }
+  }
+
+  .nav-content {
+    @apply flex flex-row md:flex-col items-center md:items-stretch justify-between md:justify-start p-4 md:p-6 gap-4 md:gap-8;
+    @apply md:h-full;
+  }
+
+  @media (max-width: 767px) {
+    .nav-content {
+      @apply border-b border-border;
+    }
+
+    .main-content {
+      @apply pt-20; /* Header yüksekliği + extra padding */
+    }
+  }
+
+  .nav-label {
+    @apply text-xs md:text-base;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-blue-500/20 appearance-none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    min-width: 100px !important;
+  }
+
+  @media (min-width: 768px) {
+    .nav-sidebar {
+      @apply fixed left-0 top-0 h-screen w-64 bg-background-50 backdrop-blur-xl border-r border-border p-6;
+    }
+  }
+
+  .currency-select {
+    min-width: 100px !important;
+  }
+
+  .language-select {
+    min-width: 100px !important;
+  }
+}
+
+/* Add responsive navigation styles */
+@media (max-width: 768px) {
+  .nav-sidebar {
+    @apply fixed bottom-0 left-0 w-full h-16 bg-background-50 backdrop-blur-xl border-t border-border;
+  }
+
+  .nav-content {
+    @apply flex-row justify-between h-full py-2 px-4;
+    width: 100%;
+    position: relative;
+  }
+
+  .nav-content > div:first-child {
+    @apply flex gap-2;
+  }
+
+  .nav-content > div:nth-child(2) {
+    @apply flex items-center gap-3;
+  }
+
+  .nav-label {
+    @apply text-xs;
+  }
+
+  .select-field {
+    @apply text-sm;
+    padding: 4px 20px 4px 8px;
+    min-width: 80px !important;
+  }
+
+  .currency-select {
+    min-width: 80px !important;
+  }
+
+  .language-select {
+    min-width: 80px !important;
+  }
+
+  .main-content {
+    @apply ml-0 mb-16;
+  }
+
+  /* Modal stilleri */
+  .settings-modal {
+    @apply fixed inset-0 z-[9999];
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  .settings-modal-content {
+    @apply fixed bottom-20 left-4 right-4 bg-background border border-border rounded-lg shadow-lg p-4;
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    z-index: 10000;
+  }
+
+  /* Select box'lar için mobil optimizasyonu */
+  .settings-modal .select-field {
+    @apply text-sm w-full;
+    padding: 8px 24px 8px 12px;
+  }
+
+  .settings-modal .currency-select,
+  .settings-modal .language-select {
+    width: 100% !important;
+  }
+}
+@media (max-width: 540px) {
+  .nav-sidebar {
+    display: none;
+  }
+}
+
+[data-theme="dark"] .select-field {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23e2e8f0' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}
+
+.settings-modal {
+  @apply fixed inset-0 z-[9999];
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.settings-modal-content {
+  @apply fixed bottom-20 left-4 right-4 bg-background border border-border rounded-lg shadow-lg p-4;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  z-index: 10000;
+}
+
+/* Select box'lar için mobil optimizasyonu */
+.settings-modal .select-field,
+.settings-modal .currency-select {
+  width: 100% !important;
+}
