@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://PFV.vercel.app',
+    url: 'https://personalfv.vercel.app',
     title: 'Personal Finance Visualizer',
     description: 'Track your expenses, manage budgets, and analyze spending patterns with Personal Finance Visualizer.',
     siteName: 'Personal Finance Visualizer'
