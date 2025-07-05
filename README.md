@@ -1,8 +1,4 @@
-You're right — the markdown formatting is slightly off in a few places. Here's a **cleaned and properly aligned version** of your `README.md`:
 
----
-
-````md
 # Personal Finance Visualizer
 
 A simple web application that helps users track, categorize, and visualize their income and expenses using interactive charts and dashboards.
