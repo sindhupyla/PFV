@@ -131,5 +131,7 @@ src/
 * Visual warning indicators
 * Budget progress tracking
 * Overspending alerts
+---
+####To run just  npm start
 
 ###Thank You
